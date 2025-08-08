@@ -1,30 +1,212 @@
-# Minimalist workout app
+# MAMI GYM - Özelleştirilebilir Antrenman Uygulaması
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+Modern, minimalist ve kullanıcı dostu spor salonu antrenman takip uygulaması. Next.js, TypeScript ve Supabase ile geliştirilmiştir.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/muhammedgumus-projects/v0-minimalist-workout-app)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/PmQDp9Qe2p4)
+## 🚀 Yeni Özellikler
 
-## Overview
+### ✨ Özelleştirilebilir Antrenman Programları
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+- **Hazır Şablonlar**: Push, Pull, Legs, Cardio, Full Body gibi profesyonel antrenman şablonları
+- **Kişisel Programlar**: Kendi antrenman programlarınızı oluşturun ve özelleştirin
+- **Program Kategorileri**: Antrenmanları kategorilere göre organize edin
+- **Esnek Yapı**: Her programa özel egzersizler, set sayıları ve tekrar aralıkları
 
-## Deployment
+### 🎯 Gelişmiş Antrenman Takibi
 
-Your project is live at:
+- **İlerleme Takibi**: Gerçek zamanlı antrenman ilerlemesi
+- **Set Tamamlama**: Her set için tamamlanma durumu takibi
+- **Süre Ölçümü**: Otomatik antrenman süresi hesaplama
+- **Notlar**: Antrenmanlarınız için kişisel notlar
+
+### 💾 Güvenli Veri Yönetimi
+
+- **Supabase Backend**: Modern ve güvenli veritabanı
+- **Kullanıcı Kimlik Doğrulama**: Güvenli giriş sistemi
+- **Veri Senkronizasyonu**: Tüm cihazlarda senkronize edilmiş veriler
+- **Yedekleme**: Otomatik veri yedekleme
+
+## 🏗️ Teknoloji Stack
+
+- **Frontend**: Next.js 15, React 18, TypeScript
+- **Styling**: Tailwind CSS, Shadcn/ui
+- **Backend**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth
+- **Icons**: Lucide React
+- **Deployment**: Vercel
+
+## 📱 Özellikler
+
+### Ana Özellikler
+
+- ✅ Responsive tasarım (mobil ve masaüstü uyumlu)
+- ✅ Kullanıcı kimlik doğrulama (kayıt/giriş)
+- ✅ Antrenman programı yönetimi
+- ✅ Egzersiz takibi ve düzenleme
+- ✅ Antrenman geçmişi
+- ✅ Kullanıcı profili yönetimi
+- ✅ Gerçek zamanlı veri senkronizasyonu
+
+### Program Yönetimi
+
+- 📋 Hazır antrenman şablonları
+- 🎨 Kişisel program oluşturma
+- 📊 Program kategorileri
+- 🔄 Şablon kopyalama
+- ✏️ Program düzenleme
+- 🗑️ Program silme
+
+### Antrenman Takibi
+
+- ⏱️ Süre takibi
+- 📈 İlerleme gösterimi
+- ✅ Set tamamlama
+- 📝 Egzersiz notları
+- 💪 Egzersiz ekleme/düzenleme
+
+## 🚀 Kurulum
+
+1. **Depoyu klonlayın**
+
+```bash
+git clone https://github.com/your-username/mami-gym.git
+cd mami-gym
+```
+
+2. **Bağımlılıkları yükleyin**
+
+```bash
+npm install
+# veya
+pnpm install
+```
+
+3. **Çevre değişkenlerini ayarlayın**
+   `.env.local` dosyası oluşturun:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+```
+
+4. **Veritabanını kurun**
+   Supabase projenizde aşağıdaki SQL scriptleri çalıştırın:
+
+```bash
+# Temel veritabanı şeması
+scripts/simple-database-setup.sql
+
+# Program sistemi
+scripts/add-program-system.sql
+
+# Varsayılan programları ekle
+scripts/insert-default-programs.sql
+```
+
+5. **Geliştirme sunucusunu başlatın**
+
+```bash
+npm run dev
+# veya
+pnpm dev
+```
+
+Uygulama `http://localhost:3000` adresinde çalışacaktır.
+
+## 📁 Proje Yapısı
+
+```
+mami-gym/
+├── app/                    # Next.js App Router
+│   ├── auth/              # Kimlik doğrulama sayfaları
+│   ├── programs/          # Program yönetim sayfaları
+│   ├── workout/           # Antrenman sayfaları
+│   ├── history/           # Antrenman geçmişi
+│   └── profile/           # Kullanıcı profili
+├── components/            # React bileşenleri
+│   ├── ui/               # UI bileşenleri (Shadcn)
+│   ├── auth-provider.tsx  # Kimlik doğrulama provider'ı
+│   ├── exercise-card.tsx  # Egzersiz kartı
+│   └── workout-page.tsx   # Antrenman sayfası
+├── lib/                   # Utility fonksiyonları
+│   ├── auth.ts           # Kimlik doğrulama
+│   ├── supabase.ts       # Supabase client
+│   ├── program-actions.ts # Program işlemleri
+│   └── workout-actions.ts # Antrenman işlemleri
+└── scripts/              # Veritabanı scriptleri
+```
+
+## 🗄️ Veritabanı Şeması
+
+### Ana Tablolar
+
+- `workouts` - Tamamlanan antrenmanlar
+- `workout_exercises` - Antrenman egzersizleri
+- `user_profile` - Kullanıcı profili bilgileri
+
+### Program Sistemi Tabloları
+
+- `program_categories` - Program kategorileri
+- `workout_programs` - Antrenman programları
+- `program_workouts` - Program içindeki antrenmanlar
+- `program_exercises` - Program egzersizleri
+
+## 🎨 Tasarım Prensipleri
+
+- **Minimalizm**: Temiz ve sade arayüz
+- **Kullanılabilirlik**: Kolay ve anlaşılır navigasyon
+- **Responsive**: Tüm cihazlarda mükemmel görünüm
+- **Performans**: Hızlı yükleme ve akıcı animasyonlar
+- **Erişilebilirlik**: Herkes için kullanılabilir tasarım
+
+## 🔧 Konfigürasyon
+
+### Tailwind CSS
+
+Projenin stil sistemi Tailwind CSS ve Shadcn/ui bileşenleri kullanılarak oluşturulmuştur.
+
+### Supabase
+
+Veritabanı ve kimlik doğrulama için Supabase kullanılmaktadır. Row Level Security (RLS) ile güvenlik sağlanmıştır.
+
+## 📝 API Endpoints
+
+### Program Actions
+
+- `getProgramCategories()` - Program kategorilerini getir
+- `getWorkoutPrograms()` - Kullanıcı programlarını getir
+- `createWorkoutProgram()` - Yeni program oluştur
+- `copyTemplateProgram()` - Şablon kopyala
+- `deleteWorkoutProgram()` - Program sil
+
+### Workout Actions
+
+- `saveWorkout()` - Antrenman kaydet
+- `getWorkoutHistory()` - Antrenman geçmişi getir
+- `getUserProfile()` - Kullanıcı profili getir
+
+## 🤝 Katkıda Bulunma
+
+1. Fork yapın
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Değişikliklerinizi commit edin (`git commit -m 'Add amazing feature'`)
+4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
+5. Pull Request açın
+
+## 📄 Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır.
+
+## 🚀 Deployment
+
+Uygulama Vercel üzerinde deploy edilmiştir:
 
 **[https://vercel.com/muhammedgumus-projects/v0-minimalist-workout-app](https://vercel.com/muhammedgumus-projects/v0-minimalist-workout-app)**
 
-## Build your app
+## 📞 İletişim
 
-Continue building your app on:
+Proje hakkında sorularınız için GitHub Issues kullanabilirsiniz.
 
-**[https://v0.dev/chat/projects/PmQDp9Qe2p4](https://v0.dev/chat/projects/PmQDp9Qe2p4)**
+---
 
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+**🏋️‍♀️ MAMI GYM ile hedeflerinize ulaşın! 💪**
